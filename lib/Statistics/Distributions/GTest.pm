@@ -15,10 +15,10 @@ Statistics::Distributions::GTest - Perl implementation of the log-likelihood rat
 =cut
 =head1 VERSION
 
-This document describes Statistics::Distributions::GTest version 0.1.1.
+This document describes Statistics::Distributions::GTest version 0.1.2.
 
 =cut
-use version; our $VERSION = qv('0.1.1'); # next release 0.1.1...
+use version; our $VERSION = qv('0.1.2'); # next release 0.1.1...
 =head1 SYNOPSIS
 
     use Statistics::Distributions::GTest;
@@ -547,7 +547,7 @@ Used to access the results of the G-test calculation. This method is context-dep
 different values depending on its calling context. In VOID context it simply prints the calculated value of G, df and
 the p_value in a table to STDOUT.
    
-    $gtest->print_results();
+    $gtest->results();
 
 In BOOLEAN context it requires you to pass it a value for the significance level of the test you wish to apply e.g.
 0.05. It returns True or False depending on whether the null hypothesis is rejected at that significance level.
