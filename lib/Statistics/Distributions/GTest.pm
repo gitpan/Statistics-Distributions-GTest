@@ -15,10 +15,10 @@ Statistics::Distributions::GTest - Perl implementation of the log-likelihood rat
 =cut
 =head1 VERSION
 
-This document describes Statistics::Distributions::GTest version 0.1.0.
+This document describes Statistics::Distributions::GTest version 0.1.1.
 
 =cut
-use version; our $VERSION = qv('0.1.0'); # next release 0.1.1...
+use version; our $VERSION = qv('0.1.1'); # next release 0.1.1...
 =head1 SYNOPSIS
 
     use Statistics::Distributions::GTest;
@@ -356,10 +356,10 @@ sub _calculate_G_alternative {
         $sum_f_ln_f += $row;
     }
 
-    my $G_alt = 2 * ( ( $sum_f_ln_f + $f_ln_f_for_total ) - 
+    my $G = 2 * ( ( $sum_f_ln_f + $f_ln_f_for_total ) - 
       ( $sum_of_f_ln_f_for_row_sums + $sum_of_f_ln_f_for_col_sums ) );
 
-    $self->{properties}{G_alt} = $G_alt;
+    $self->{properties}{G} = $G;
    
     return;
 }
@@ -520,7 +520,12 @@ sub results {
       if ( ( !exists $self->{properties}{analysis}{G} ) && ( !exists $self->{properties}{analysis}{G_alt} ) );
 
     #y preferentially grab the traditional method result
-    my $G = ( !exists $self->{properties}{G} ) ? $self->{properties}{G} : $self->{properties}{G_alt};
+    
+    #my $G = ( !exists $self->{properties}{G} ) ? $self->{properties}{G} : $self->{properties}{G_alt};
+    #/ twat!
+    #my $G = exists $self->{properties}{G};
+    my $G = $self->{properties}{G};
+    
     my $df = $self->{properties}{df};
     my $p_val = $self->{properties}{p_value};
 
@@ -622,7 +627,7 @@ modify it under the same terms as Perl itself. See L<perlartistic>.
 =head1 SEE ALSO
 
 L<Statistics::Descriptive>, L<Statistics::Distributions>, L<Statistics::Distributions::Analyze>, L<Statistics::ANOVA>,
-L<Statistics::Distributions::Ancova>.
+L<Statistics::Distributions::Ancova>, L<Statistics::ChiSquare>.
 
 =cut
 =head1 DISCLAIMER OF WARRANTY
