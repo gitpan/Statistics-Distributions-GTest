@@ -10,15 +10,15 @@ use Text::SimpleTable;
 use Contextual::Return;
 =head1 NAME
 
-Statistics::Distributions::GTest - Perl implementation of the log-likelihood ratio test (G-test) of independence.
+Statistics::Distributions::GTest - Perl implementation of the Log-Likelihood Ratio Test (G-test) of Independence.
 
 =cut
 =head1 VERSION
 
-This document describes Statistics::Distributions::GTest version 0.1.2.
+This document describes Statistics::Distributions::GTest version 0.1.4.
 
 =cut
-use version; our $VERSION = qv('0.1.2'); # next release 0.1.1...
+use version; our $VERSION = qv('0.1.4'); # next release 0.1.1...
 =head1 SYNOPSIS
 
     use Statistics::Distributions::GTest;
@@ -26,7 +26,7 @@ use version; our $VERSION = qv('0.1.2'); # next release 0.1.1...
     # Create an GTest object.
     my $gtest = Statistics::Distributions::GTest->new();
 
-    # An 3x3 example. Data is sent to object a reference to a LoL.
+    # A 3x3 example. Data is sent to object a reference to a LoL.
     my $a_ref = [
                     [ 458, 537 ,345],
                     [ 385, 457 ,456],
@@ -36,7 +36,7 @@ use version; our $VERSION = qv('0.1.2'); # next release 0.1.1...
     # Feed the object the data by passing reference with named argument 'table'.
     $gtest->read_data ( { table => $a_ref } );
 
-    # perform the analysis using one of the two methods - see DESCRIPTION.
+    # Perform the analysis using one of the two methods - see DESCRIPTION.
     $gtest->G();
     #$gtest->G_alt();
 
@@ -588,7 +588,7 @@ sub _boolean {
     
 print qq{\nsig $sig};
 
-    croak qq{\nThe p value must be numeric and in the range > 0 and < 1.} if ( $sig !~ /\A \d{1,7} \.? \d+ ([eE][+-]?\d+)? \z/xms || $sig <= 0 || $sig >= 1) ;
+    croak qq{\nThe p value must be numeric and in the range > 0 and < 1.} if ( $sig !~ /\A \d* \.? \d+ ([eE][+-]?\d+)? \z/xms || $sig <= 0 || $sig >= 1) ;
       #/ forgot to check for exponential numbers
       #if ( $sig !~ /\A[01]?\.\d{1,7}\z/xms || $sig <= 0 || $sig >= 1) ;
     
