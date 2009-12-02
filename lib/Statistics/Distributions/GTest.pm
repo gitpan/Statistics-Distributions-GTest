@@ -15,10 +15,10 @@ Statistics::Distributions::GTest - Perl implementation of the Log-Likelihood Rat
 =cut
 =head1 VERSION
 
-This document describes Statistics::Distributions::GTest version 0.1.4.
+This document describes Statistics::Distributions::GTest version 0.1.5.
 
 =cut
-use version; our $VERSION = qv('0.1.4'); # next release 0.1.1...
+use version; our $VERSION = qv('0.1.5'); # next release 0.1.1...
 =head1 SYNOPSIS
 
     use Statistics::Distributions::GTest;
